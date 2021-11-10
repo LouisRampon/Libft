@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 11:41:34 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/04 14:30:55 by lorampon         ###   ########.fr       */
+/*   Created: 2021/11/10 11:50:33 by lorampon          #+#    #+#             */
+/*   Updated: 2021/11/10 12:05:43 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(char *str, int c)
-{
-	int	i;
-	int	j;
+char	*ft_itoa(int n)
+{	
+	char	*str;
+	int		i;
+	long	nb;
 
-	i = 0;
-	while (str[i])
+	i = (n < 0);
+	nb = (n < 0) * -n + (n >= 0) * n;
+	while (nb > 0)
 	{
-		if (str[i] == c)
-			j = i;
+		nb /= 10;
 		i++;
 	}
-	if (j > -1)
-		return (&str[j]);
-	return (0);
+	str = malloc(sizeof(*str) * (i + 1));
+	str[i] = '\0';
+	nb = (n < 0) * -n + (n >= 0) * n;
+	while (nb > 0)
+	{
+		i--;
+		str[i] = nb + '0';
+		nb /= 10;
+	}
+	if (n < 0)
+		str[0] = '-';
+	return (str);
 }

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/08 18:46:32 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/04 11:00:24 by lorampon         ###   ########.fr       */
+/*   Created: 2021/09/05 15:54:15 by lorampon          #+#    #+#             */
+/*   Updated: 2021/11/10 11:24:07 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	char	*dest;
-	int		i;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	dest = malloc(sizeof(*src) * (ft_strlen(src) + 1));
-	if (!dest)
-		return (0);
-	while (src[i])
+	len = ft_strlen(dest);
+	if (len > size | size == 0)
 	{
-		dest[i] = src[i];
-		i++;
+		return (ft_strlen(src) + size);
 	}
-	dest[i] = '\0';
-	return (dest);
+	while (src[i] && len + 1 < size)
+	{
+		dest[len] = src[i];
+		i++;
+		len++;
+	}
+	dest[len] = '\0';
+	return (ft_strlen(dest) + ft_strlen(&src[i]));
 }
