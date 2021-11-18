@@ -10,10 +10,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 	i = 0;
 	temp1 = (unsigned char*)src;
 	temp2 = (unsigned char*)dest;
+	if (!size|| src == dest)
+		return (dest);
 	while (i < size)
 	{
-		temp1[i] = temp2[i];
+		temp2[i] = temp1[i];
 		i++;
 	}
-	return (dest);
+	return (temp2);
 }

@@ -6,72 +6,35 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 15:40:05 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/04 11:00:24 by lorampon         ###   ########.fr       */
+/*   Updated: 2021/11/18 17:35:30 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strs_len(char **strs, int size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	j;
-	int	k;
+	char *str;
+	size_t i;
+	size_t j;
 
 	i = 0;
-	k = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (strs[i][j])
-		{
-			j++;
-			k++;
-		}
-		i++;
-	}
-	return (k);
-}
-
-int	ft_concat_sep(int k, char *str, char *sep)
-{
-	int	i;
-
-	i = 0;
-	while (sep[i])
-	{
-		str[k] = sep[i];
-		i++;
-		k++;
-	}
-	return (k);
-}
-
-char	*ft_strjoin(int size, char **strs, char *sep)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	*str;
-
-	i = 0;
-	k = 0;
-	str = malloc(ft_strs_len(strs, size) + ft_strlen(sep) * size + 1);
-	if (!str)
+	if (!s1 || !s2)
 		return (0);
-	while (i < size)
+	if (!(str = malloc(sizeof(char *) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (0);
+	while (s1[i])
 	{
-		j = 0;
-		while (strs[i][j])
-		{
-			str[k] = strs[i][j];
-			k++;
-			j++;
-		}
-		if (i < size - 1)
-			k = ft_concat_sep(k, str, sep);
+		str[i] = s1[i];
 		i++;
 	}
-	str[k] = '\0';
+	j = 0;
+	while (s2[j])
+	{
+		str[i] = s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
 	return (str);
 }

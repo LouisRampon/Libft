@@ -6,91 +6,72 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 10:32:16 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/04 14:25:30 by lorampon         ###   ########.fr       */
+/*   Updated: 2021/11/18 18:05:01 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_char_is_charset(char c, char *charset)
+size_t	ft_nb_string(char *str, char c)
 {
-	int	i;
+	size_t	i;
+	size_t tot;
 
 	i = 0;
-	while (charset[i])
+	tot = 0;
+	while(str[i])
 	{
-		if (c == charset[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_nb_string(char *str, char *charset)
-{
-	int	i;
-	int	k;
-
-	i = 0;
-	k = 0;
-	while (str[i])
-	{
-		while (ft_char_is_charset(str[i], charset) && str[i])
+		while(str[i] == c && str[i])
 			i++;
 		if (str[i])
-			k++;
-		while (!ft_char_is_charset(str[i], charset) && str[i])
+			tot++;
+		while (str[i] != c && str[i])
 			i++;
 	}
-	return (k);
+	return (tot);
 }
 
-int	ft_size_str(char *str, char *charset, int i)
+size_t ft_size_str(char *str, char c, size_t j)
 {
-	int	j;
-	int	k;
+	size_t	i;
 
-	k = 0;
-	while (str[i])
+	i = 0;
+	while (str[j])
 	{
-		j = 0;
-		while (charset[j])
-		{
-			if (charset[j] == str[i])
-				return (k);
-			j++;
-		}
+		if (str[j] == c)
+			return (i);
 		i++;
-		k++;
+		j++;
 	}
 	return (i);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char *str, char c)
 {
-	int		i;
-	int		j;
-	int		k;
 	char	**strs;
+	size_t	i;
+	size_t 	j;
+	size_t	k;
 
-	i = 0;
+	i= 0;
 	j = 0;
-	strs = malloc(sizeof(*strs) * (ft_nb_string(str, charset) + 1));
+	strs = malloc(sizeof(*strs) * (ft_nb_string(str, c) + 1));
 	if (!strs)
 		return (0);
-	while (j < ft_nb_string(str, charset))
+	while (i < ft_nb_string(str, c))
 	{
-		while (ft_char_is_charset(str[i], charset) && str[i])
-			i++;
-		strs[j] = malloc(sizeof(**strs) * (ft_size_str(str, charset, i) + 1));
-		if (!strs[j])
+		while (str[j] == c && str[j])
+			j++;
+		strs[i] = malloc(sizeof(**strs) * (ft_size_str(str, c, j) + 1));
+		if (!strs[i])
 			return (0);
 		k = 0;
-		while (ft_size_str(str, charset, i) && str[i])
-			strs[j][k++] = str[i++];
-		strs[j][k] = '\0';
-		j++;
+		while (ft_size_str(str, c, j) && str[j])
+			strs[i][k++] = str[j++];
+		strs[i][k] = '\0';
+		i++;
 	}
-	strs[j] = 0;
+	strs[i] = 0;
 	return (strs);
 }
+

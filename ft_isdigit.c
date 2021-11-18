@@ -6,13 +6,13 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 10:47:25 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/10 10:47:25 by lorampon         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:36:27 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isdigit(char c)
+int ft_isdigit(int c)
 {
     if(c >= '0' && c <= '9')
         return (1);

@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:45:54 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/10 11:30:32 by lorampon         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:31:15 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ char	*ft_strnstr(const char *big, const char *little, size_t size)
 {
 	size_t	i;
 	size_t	j;
-	size_t len;
 
 	i = 0;
-	len = ft_strlen(little);
-	if (!len)
+	if (!ft_strlen(little))
 		return ((char *)big);
 	while (big[i] && i < size)
 	{
 		j = 0;
-		while (big[i] == little[j])
+		while (big[i + j] == little[j] && i + j < size)
 		{
-			if (j == len)
-				return ((char *)&little[j - len]);
+			if (!little[j + 1])
+				return ((char *)&big[i]);
 			j++;
 		}
 		i++;

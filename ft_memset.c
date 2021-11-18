@@ -6,20 +6,23 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:43:14 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/04 14:25:16 by lorampon         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:04:49 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *ptr, int value, int size)
+#include "libft.h"
+
+void	*ft_memset(void *ptr, int value, size_t size)
 {
-	int	i;
+	size_t	i;
+	unsigned char *temp;
 
 	i = 0;
+	temp = (unsigned char *)ptr;
 	while (i < size)
 	{
-		*(int *)ptr = value;
-		ptr++;
+		temp[i] = value;
 		i++;
 	}
-	return (ptr);
+	return (temp);
 }

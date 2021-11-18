@@ -6,7 +6,7 @@
 #    By: ltrinchi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2021/11/10 14:45:28 by lorampon         ###   ########lyon.fr    #
+#    Updated: 2021/11/18 14:30:18 by lorampon         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -38,7 +38,13 @@ SRCS =	ft_atoi.c \
 		ft_itoa.c \
 		ft_strjoin.c \
 		ft_memcmp.c \
-		ft_substr.c 
+		ft_substr.c \
+		ft_putnbr_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putchar_fd.c \
+		ft_strmapi.c 
+
 
 
 

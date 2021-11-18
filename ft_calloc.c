@@ -5,8 +5,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	ptr = (void*)malloc(count *size);
-	if (!ptr)
+	if (!(ptr = (void*)malloc(count *size)))
 		return (0);
 	ft_bzero(ptr, count);
 	return (ptr);

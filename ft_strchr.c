@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:37:59 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/10 14:12:42 by lorampon         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:22:59 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strchr(const char *str, int c)
 			return ((char *)&str[i]);
 		i++;
 	}
+	if (str[i] == c)
+		return ((char *)&str[i]);
 	return (0);
 }
