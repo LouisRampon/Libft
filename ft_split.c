@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 10:32:16 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/18 18:05:01 by lorampon         ###   ########lyon.fr   */
+/*   Updated: 2021/12/02 13:54:12 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 size_t	ft_nb_string(char *str, char c)
 {
 	size_t	i;
-	size_t tot;
+	size_t	tot;
 
 	i = 0;
 	tot = 0;
-	while(str[i])
+	while (str[i])
 	{
-		while(str[i] == c && str[i])
+		while (str[i] == c && str[i])
 			i++;
 		if (str[i])
 			tot++;
@@ -31,7 +31,7 @@ size_t	ft_nb_string(char *str, char c)
 	return (tot);
 }
 
-size_t ft_size_str(char *str, char c, size_t j)
+size_t	ft_size_str(char *str, char c, size_t j)
 {
 	size_t	i;
 
@@ -46,14 +46,33 @@ size_t ft_size_str(char *str, char c, size_t j)
 	return (i);
 }
 
+char	*ft_mallocsplit(char **strs, size_t size, size_t i)
+{
+	strs[i] = malloc(sizeof(**strs) * size);
+	if (!strs[i])
+	{
+		while (i >= 0)
+		{
+			free(strs[i]);
+			i--;
+		}
+		free(strs);
+		return (0);
+	}
+	else
+		return (strs[i]);
+}
+
 char	**ft_split(char *str, char c)
 {
 	char	**strs;
 	size_t	i;
-	size_t 	j;
+	size_t	j;
 	size_t	k;
 
-	i= 0;
+	if (!str)
+		return (0);
+	i = 0;
 	j = 0;
 	strs = malloc(sizeof(*strs) * (ft_nb_string(str, c) + 1));
 	if (!strs)
@@ -62,16 +81,12 @@ char	**ft_split(char *str, char c)
 	{
 		while (str[j] == c && str[j])
 			j++;
-		strs[i] = malloc(sizeof(**strs) * (ft_size_str(str, c, j) + 1));
-		if (!strs[i])
-			return (0);
+		strs[i] = ft_mallocsplit(strs, (ft_size_str(str, c, j) + 1), i);
 		k = 0;
 		while (ft_size_str(str, c, j) && str[j])
 			strs[i][k++] = str[j++];
-		strs[i][k] = '\0';
-		i++;
+		strs[i++][k] = '\0';
 	}
 	strs[i] = 0;
 	return (strs);
 }
-

@@ -6,17 +6,17 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 10:46:58 by lorampon          #+#    #+#             */
-/*   Updated: 2021/11/18 14:37:49 by lorampon         ###   ########lyon.fr   */
+/*   Updated: 2021/12/01 13:15:15 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
-    if (c >= 'a' && c <= 'z')
-        return (1);
-    if (c >= 'A' && c <= 'Z')
-        return (1);
-    return (0);
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
 }

@@ -6,9 +6,10 @@
 #    By: ltrinchi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2021/11/18 14:30:18 by lorampon         ###   ########lyon.fr    #
+#    Updated: 2021/12/02 13:40:37 by lorampon         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
+
 NAME = libft.a
 
 SRCS =	ft_atoi.c \
@@ -43,52 +44,48 @@ SRCS =	ft_atoi.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putchar_fd.c \
-		ft_strmapi.c 
-
-
-
+		ft_strmapi.c \
+		ft_memchr.c \
+		ft_striteri.c
 
 SRCSBNS = ft_lstnew.c \
 		  ft_lstadd_front.c \
 		  ft_lstsize.c \
 		  ft_lstlast.c \
 		  ft_lstadd_back.c \
-		  ft_lestdelone.c \
+		  ft_lstdelone.c \
 		  ft_lstclear.c \
 		  ft_lstiter.c \
 		  ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
+
 OBJSBS = $(SRCSBNS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
 
+CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -rf
 
 all: $(NAME)
 
 %.o: %.c libft.h
-#@echo "\033[0;33m Compiling:\033[0m" $<
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(OBJSBS)
 	ar rc $(NAME) $(OBJS)
-#@echo "\033[0;32m [Build OK]\033[0m" $<
 
 bonus: $(OBJS) $(OBJSBS)
-	$(CC) $(CFLAGS) -c $^ -o $(<:.c=.o)
+	ar rc $(NAME) $(OBJS) $(OBJSBS)
 
 clean:
-#@echo "\033[0;33m Cleaning:\033[0m" $<
-	$(RM) $(OBJS)
-#@echo "\033[0;36m [Cleaned]\033[0m" $<
+	$(RM) $(OBJS) $(OBJSBS)
 
 fclean: clean
-#@echo "\033[0;33m Cleaning:\033[0m" $<
 	$(RM) $(NAME)
-#@echo "\033[0;36m [Cleaned]\033[0m" $<
 
 re: fclean all
 
 .PHONY: all bonus clean fclean re
+
