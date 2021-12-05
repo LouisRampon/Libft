@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:56:56 by lorampon          #+#    #+#             */
-/*   Updated: 2021/12/02 13:38:05 by lorampon         ###   ########lyon.fr   */
+/*   Updated: 2021/12/05 14:16:13 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_memcmp(const void *ptr1, const void *ptr2, size_t size);
 void	*ft_memcpy(void	*dest, const void *src, size_t size);
 void	*ft_memmove(void *dest, const void *src, size_t size);
 void	*ft_memchr(const void *mem, int c, size_t size);
-char	**ft_split(char *str, char c);
+char	**ft_split(const char *str, char c);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
