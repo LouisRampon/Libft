@@ -6,13 +6,13 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 10:32:16 by lorampon          #+#    #+#             */
-/*   Updated: 2021/12/05 14:15:58 by lorampon         ###   ########lyon.fr   */
+/*   Updated: 2021/12/05 14:19:11 by lorampon         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nb_string(char *str, char c)
+size_t	ft_nb_string(const char *str, char c)
 {
 	size_t	i;
 	size_t	tot;
@@ -31,7 +31,7 @@ size_t	ft_nb_string(char *str, char c)
 	return (tot);
 }
 
-size_t	ft_size_str(char *str, char c, size_t j)
+size_t	ft_size_str(const char *str, char c, size_t j)
 {
 	size_t	i;
 
